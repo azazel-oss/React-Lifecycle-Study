@@ -6,6 +6,7 @@ class Counter extends Component {
     super(props);
     this.state = {
       counter: 0,
+      seed: 0,
     };
     this.increment = this.increment.bind(this);
     this.decrement = this.decrement.bind(this);
@@ -23,6 +24,15 @@ class Counter extends Component {
         counter: prevState.counter - 1,
       };
     });
+  }
+  static getDerivedStateFromProps(props, state) {
+    if (props.seed && state.seed !== props.seed) {
+      return {
+        counter: props.seed,
+        seed: props.seed,
+      };
+    }
+    return null;
   }
   componentDidMount() {
     console.log("Component Did Mount");

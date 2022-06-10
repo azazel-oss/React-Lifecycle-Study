@@ -4,6 +4,7 @@ import { useState } from "react";
 function App() {
   const [mount, setMount] = useState(true);
   const [randomProp, setRandomProp] = useState(0);
+  const [seed, setSeed] = useState(50);
   function mountCounter() {
     setMount(true);
   }
@@ -12,6 +13,9 @@ function App() {
   }
   function ignoreProp() {
     setRandomProp(Math.random());
+  }
+  function seedGenerator() {
+    setSeed(Math.floor(Math.random() * 100));
   }
   return (
     <div>
@@ -23,7 +27,8 @@ function App() {
       </button>
       <br />
       <button onClick={ignoreProp}>Ignore Prop</button>
-      <div>{mount && <Counter ignoreProp={randomProp} />}</div>
+      <button onClick={seedGenerator}>Generate new Seed</button>
+      <div>{mount && <Counter ignoreProp={randomProp} seed={seed} />}</div>
     </div>
   );
 }
