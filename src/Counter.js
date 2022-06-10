@@ -25,6 +25,10 @@ class Counter extends Component {
       };
     });
   }
+  componentDidMount() {
+    console.log("Component Did Mount");
+    console.log("------------------------");
+  }
   static getDerivedStateFromProps(props, state) {
     if (props.seed && state.seed !== props.seed) {
       return {
@@ -33,19 +37,6 @@ class Counter extends Component {
       };
     }
     return null;
-  }
-  getSnapshotBeforeUpdate(prevProps, prevState) {
-    console.log("Get Snapshot before Update");
-    console.log("------------------------");
-    return null;
-  }
-  componentDidMount() {
-    console.log("Component Did Mount");
-    console.log("------------------------");
-  }
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log("Component Did Update");
-    console.log("------------------------");
   }
   shouldComponentUpdate(nextProps, nextState) {
     if (
@@ -59,6 +50,15 @@ class Counter extends Component {
     console.log("Should Component Update - New Render");
     console.log("------------------------");
     return true;
+  }
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    console.log("Get Snapshot before Update");
+    console.log("------------------------");
+    return null;
+  }
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    console.log("Component Did Update");
+    console.log("------------------------");
   }
   render() {
     console.log("Render");
