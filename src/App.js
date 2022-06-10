@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import Counter from "./Counter";
+import { useState } from "react";
 
 function App() {
+  const [mount, setMount] = useState(true);
+  function mountCounter() {
+    setMount(true);
+  }
+  function unmountCounter() {
+    setMount(false);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button onClick={mountCounter} disabled={mount}>
+        Mount counter
+      </button>
+      <button onClick={unmountCounter} disabled={!mount}>
+        Unmount counter
+      </button>
+      <div>{mount && <Counter />}</div>
     </div>
   );
 }
