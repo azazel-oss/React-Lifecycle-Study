@@ -1,5 +1,11 @@
 import { Component } from "react";
 
+class ErrorComponent extends Component {
+  render() {
+    return <div>{this.props}</div>;
+  }
+}
+
 class Counter extends Component {
   constructor(props) {
     console.log("Contructor");
@@ -60,6 +66,9 @@ class Counter extends Component {
     console.log("Component Did Update");
     console.log("------------------------");
   }
+  componentDidCatch(error, info) {
+    console.log("Component Did Catch");
+  }
   render() {
     console.log("Render");
     return (
@@ -67,6 +76,7 @@ class Counter extends Component {
         <button onClick={this.increment}>Increment</button>
         <button onClick={this.decrement}>Decrement</button>
         <div>Counter : {this.state.counter}</div>
+        <ErrorComponent />
       </div>
     );
   }
