@@ -3,11 +3,15 @@ import { useState } from "react";
 
 function App() {
   const [mount, setMount] = useState(true);
+  const [randomProp, setRandomProp] = useState(0);
   function mountCounter() {
     setMount(true);
   }
   function unmountCounter() {
     setMount(false);
+  }
+  function ignoreProp() {
+    setRandomProp(Math.random());
   }
   return (
     <div>
@@ -17,7 +21,9 @@ function App() {
       <button onClick={unmountCounter} disabled={!mount}>
         Unmount counter
       </button>
-      <div>{mount && <Counter />}</div>
+      <br />
+      <button onClick={ignoreProp}>Ignore Prop</button>
+      <div>{mount && <Counter ignoreProp={randomProp} />}</div>
     </div>
   );
 }
