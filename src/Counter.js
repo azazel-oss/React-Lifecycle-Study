@@ -1,10 +1,10 @@
 import { Component } from "react";
 
-class ErrorComponent extends Component {
-  render() {
-    return <div>{this.props}</div>;
-  }
-}
+// class ErrorComponent extends Component {
+//   render() {
+//     return <div>{this.props}</div>;
+//   }
+// }
 
 class Counter extends Component {
   constructor(props) {
@@ -69,6 +69,9 @@ class Counter extends Component {
   componentDidCatch(error, info) {
     console.log("Component Did Catch");
   }
+  componentWillUnmount() {
+    console.log("Component Will Unmount");
+  }
   render() {
     console.log("Render");
     return (
@@ -76,7 +79,7 @@ class Counter extends Component {
         <button onClick={this.increment}>Increment</button>
         <button onClick={this.decrement}>Decrement</button>
         <div>Counter : {this.state.counter}</div>
-        <ErrorComponent />
+        {/* <ErrorComponent /> */}
       </div>
     );
   }
